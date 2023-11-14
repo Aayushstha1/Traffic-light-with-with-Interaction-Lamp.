@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attractive Traffic Light</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #3498db;
+    }
+
+    .traffic-light {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .light {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .active {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .light:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    .red:before {
+      background-color: red;
+    }
+
+    .yellow:before {
+      background-color: yellow;
+    }
+
+    .green:before {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="traffic-light">
+    <div class="light red" onclick="toggleLight(this)"></div>
+    <div class="light yellow" onclick="toggleLight(this)"></div>
+    <div class="light green" onclick="toggleLight(this)"></div>
+  </div>
+
+  <script>
+    function toggleLight(light) {
+      const lights = document.querySelectorAll('.light');
+      lights.forEach(l => l.classList.remove('active'));
+      light.classList.add('active');
+    }
+  </script>
+</body>
+</html>
